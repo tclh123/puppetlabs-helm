@@ -134,7 +134,7 @@ class helm (
   Optional[String] $home                    = $helm::params::home,
   Optional[String] $host                    = $helm::params::host,
   Boolean $init                             = $helm::params::init,
-  String $install_path                      = $helm::params::install_path,
+  Optional[String] $install_path            = $helm::params::install_path,
   Optional[String] $kube_context            = $helm::params::kube_context,
   Optional[String] $local_repo_url          = $helm::params::local_repo_url,
   Optional[String] $proxy                   = $helm::params::proxy,
@@ -153,7 +153,7 @@ class helm (
   Optional[String]  $tls_ca_cert            = $helm::params::tls_ca_cert,
   Boolean $upgrade                          = $helm::params::upgrade,
   String $version                           = $helm::params::version,
-  String $archive_baseurl                   = $helm::params::archive_baseurl,
+  Optional[String] $archive_baseurl         = $helm::params::archive_baseurl,
 ) inherits helm::params {
 
   if $::kernel {

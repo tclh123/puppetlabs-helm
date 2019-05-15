@@ -1,11 +1,11 @@
 # == helm::repo_update
 define helm::repo_update (
   Boolean $debug                     = false,
-  Optional[Array] $env               = undef,
+  Optional[Array] $env               = $::helm::env,
   Optional[String] $home             = undef,
   Optional[String] $host             = undef,
   Optional[String] $kube_context     = undef,
-  Optional[Array] $path              = undef,
+  Optional[Array] $path              = $::helm::path,
   Optional[String] $tiller_namespace = undef,
   Boolean $update                    = true,
 ){

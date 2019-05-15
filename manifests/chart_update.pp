@@ -13,7 +13,7 @@ define helm::chart_update (
   Boolean $debug                  = false,
   Boolean $devel                  = false,
   Boolean $dry_run                = false,
-  Optional[Array] $env            = undef,
+  Optional[Array] $env            = $::helm::env,
   Optional[String] $key_file      = undef,
   Optional[String] $keyring       = undef,
   Optional[String] $home          = undef,
@@ -22,7 +22,7 @@ define helm::chart_update (
   Optional[String] $kube_context  = undef,
   Optional[String] $namespace     = undef,
   Boolean $no_hooks               = false,
-  Array $path                     = undef,
+  Optional[Array] $path           = $::helm::path,
   Boolean $purge                  = true,
   Optional[String] $repo          = undef,
   Optional[String] $release_name  = undef,
@@ -41,6 +41,7 @@ define helm::chart_update (
   Boolean $verify                 = false,
   Optional[String] $version       = undef,
   Boolean $wait                   = false,
+  Boolean $refreshonly            = false,
 ){
 
   include ::helm::params
@@ -135,5 +136,6 @@ define helm::chart_update (
     tries       => 10,
     try_sleep   => 10,
     unless      => $unless_chart,
+    refreshonly => $refreshonly,
   }
 }
